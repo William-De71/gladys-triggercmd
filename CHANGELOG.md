@@ -5,7 +5,7 @@ follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions
 follow [Semantic Versioning](https://semver.org/). This file is generated at
 each release from the Conventional Commits: do not edit it by hand.
 
-## [0.1.0] - unreleased
+## [0.1.0] - 2026-10-26
 
 ### Added
 
@@ -15,3 +15,5 @@ each release from the Conventional Commits: do not edit it by hand.
 - **widget:** the last runs, sent or received, with a "Run a command" form listing the commands and their parameters, and a Refresh button
 - **configuration:** token with a guide, the Gladys computer, its name and its commands, "Test the connection" and "Diagnostic" buttons
 - **i18n:** English, French, German and Spanish for the manifest, the runtime texts, the documentation and the README
+
+[0.1.0]: https://github.com/William-De71/gladys-triggercmd/releases/tag/v0.1.0
