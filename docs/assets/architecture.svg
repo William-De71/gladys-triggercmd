@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="320" viewBox="0 0 1100 320">
+  <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#57606a"/></marker></defs>
+  <rect width="1100" height="320" fill="#ffffff"/>
+  <g font-family="DejaVu Sans, Arial, sans-serif" text-anchor="middle">
+    <rect x="20" y="70" width="220" height="150" rx="14" fill="#e8f1fb" stroke="#2f6fb5" stroke-width="2"/>
+    <text x="130" y="110" font-size="20" font-weight="bold" fill="#1f2328">Gladys Assistant</text>
+    <text x="130" y="140" font-size="14" fill="#57606a">computer devices,</text>
+    <text x="130" y="160" font-size="14" fill="#57606a">dashboard widget,</text>
+    <text x="130" y="180" font-size="14" fill="#57606a">scenes</text>
+    <rect x="330" y="70" width="230" height="150" rx="14" fill="#eef8f0" stroke="#1a7f37" stroke-width="2"/>
+    <text x="445" y="105" font-size="17" font-weight="bold" fill="#1f2328">gladys-triggercmd</text>
+    <text x="445" y="135" font-size="14" fill="#57606a">Docker container</text>
+    <text x="445" y="155" font-size="14" fill="#57606a">commands read every 15 min,</text>
+    <text x="445" y="175" font-size="14" fill="#57606a">runs and state in /data,</text>
+    <text x="445" y="195" font-size="14" fill="#57606a">optional "Gladys" computer</text>
+    <rect x="650" y="70" width="210" height="150" rx="14" fill="#fdf3e6" stroke="#c96a12" stroke-width="2"/>
+    <text x="755" y="105" font-size="17" font-weight="bold" fill="#1f2328">TRIGGERcmd cloud</text>
+    <text x="755" y="135" font-size="14" fill="#57606a">www.triggercmd.com</text>
+    <text x="755" y="155" font-size="14" fill="#57606a">command/list,</text>
+    <text x="755" y="175" font-size="14" fill="#57606a">run/trigger,</text>
+    <text x="755" y="195" font-size="14" fill="#57606a">socket of the computer</text>
+    <rect x="930" y="40" width="150" height="90" rx="14" fill="#f6f0fd" stroke="#8250df" stroke-width="2"/>
+    <text x="1005" y="75" font-size="15" font-weight="bold" fill="#1f2328">Agents</text>
+    <text x="1005" y="100" font-size="13" fill="#57606a">PC, Mac, Linux,</text>
+    <text x="1005" y="118" font-size="13" fill="#57606a">Raspberry Pi</text>
+    <rect x="930" y="160" width="150" height="90" rx="14" fill="#f6f0fd" stroke="#8250df" stroke-width="2"/>
+    <text x="1005" y="195" font-size="15" font-weight="bold" fill="#1f2328">Alexa, Google</text>
+    <text x="1005" y="220" font-size="13" fill="#57606a">panels, IFTTT,</text>
+    <text x="1005" y="238" font-size="13" fill="#57606a">AI assistants</text>
+    <path d="M245 145 H325" stroke="#57606a" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+    <text x="285" y="125" font-size="12" fill="#57606a">REST</text>
+    <text x="285" y="170" font-size="12" fill="#57606a">+ WebSocket</text>
+    <text x="285" y="265" font-size="12" fill="#57606a">/api/integration/v1/*</text>
+    <path d="M565 145 H645" stroke="#57606a" stroke-width="2" marker-start="url(#a)" marker-end="url(#a)"/>
+    <text x="605" y="125" font-size="12" fill="#57606a">HTTPS</text>
+    <text x="605" y="170" font-size="12" fill="#57606a">+ socket</text>
+    <path d="M865 115 L925 90" stroke="#57606a" stroke-width="2" marker-end="url(#a)"/>
+    <path d="M925 205 L865 175" stroke="#57606a" stroke-width="2" marker-end="url(#a)"/>
+    <text x="550" y="300" font-size="13" fill="#57606a">Cloud transport: the token and the names of the commands go to TRIGGERcmd; the agents run the commands on your computers. Illustration.</text>
+  </g>
+</svg>

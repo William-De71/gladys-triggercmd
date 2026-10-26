@@ -1,0 +1,184 @@
+{
+  "devices": {
+    "computer": {
+      "external_id": "ext:test-integration:computer:5f1a2b3c4d5e6f7a8b9c0d1e",
+      "should_poll": false,
+      "params": ["TRIGGERCMD_COMPUTER_ID"],
+      "features": [
+        {
+          "external_id": "ext:test-integration:computer:5f1a2b3c4d5e6f7a8b9c0d1e:cmd_f59d9abe42b6",
+          "category": "button",
+          "type": "push",
+          "min": 0,
+          "max": 1,
+          "read_only": false,
+          "has_feedback": false
+        },
+        {
+          "external_id": "ext:test-integration:computer:5f1a2b3c4d5e6f7a8b9c0d1e:cmd_b10fb966d720",
+          "category": "switch",
+          "type": "binary",
+          "min": 0,
+          "max": 1,
+          "read_only": false,
+          "has_feedback": false
+        }
+      ]
+    }
+  },
+  "manifest": {
+    "config_schema": [
+      {
+        "key": "intro",
+        "type": "section"
+      },
+      {
+        "key": "token",
+        "type": "secret"
+      },
+      {
+        "key": "gladys_section",
+        "type": "section"
+      },
+      {
+        "key": "gladys_computer",
+        "type": "boolean"
+      },
+      {
+        "key": "gladys_computer_name",
+        "type": "string"
+      },
+      {
+        "key": "gladys_commands",
+        "type": "string"
+      }
+    ],
+    "actions": ["test_connection", "diagnostic"],
+    "action_fields": {
+      "test_connection": [],
+      "diagnostic": []
+    },
+    "widgets": [
+      {
+        "key": "commands",
+        "settings": ["computer"],
+        "options": {}
+      }
+    ],
+    "scene_triggers": [
+      {
+        "key": "command_received",
+        "fields": [
+          {
+            "key": "command",
+            "options": []
+          },
+          {
+            "key": "state",
+            "options": ["on", "off"]
+          }
+        ],
+        "variables": [
+          {
+            "key": "command",
+            "type": "string"
+          },
+          {
+            "key": "params",
+            "type": "string"
+          },
+          {
+            "key": "state",
+            "type": "string"
+          },
+          {
+            "key": "sender",
+            "type": "string"
+          },
+          {
+            "key": "computer",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "run_failed",
+        "fields": [
+          {
+            "key": "reason",
+            "options": [
+              "unknown_command",
+              "rate_limit",
+              "token",
+              "subscription",
+              "unreachable",
+              "error"
+            ]
+          }
+        ],
+        "variables": [
+          {
+            "key": "computer",
+            "type": "string"
+          },
+          {
+            "key": "command",
+            "type": "string"
+          },
+          {
+            "key": "reason",
+            "type": "string"
+          },
+          {
+            "key": "message",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "access_refused",
+        "fields": [],
+        "variables": [
+          {
+            "key": "message",
+            "type": "string"
+          }
+        ]
+      }
+    ],
+    "scene_actions": [
+      {
+        "key": "run_command",
+        "fields": ["computer", "command", "parameters"],
+        "outputs": [
+          {
+            "key": "computer",
+            "type": "string"
+          },
+          {
+            "key": "command",
+            "type": "string"
+          },
+          {
+            "key": "message",
+            "type": "string"
+          }
+        ]
+      },
+      {
+        "key": "refresh",
+        "fields": [],
+        "outputs": [
+          {
+            "key": "computer_count",
+            "type": "number"
+          },
+          {
+            "key": "command_count",
+            "type": "number"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,685 @@
+{
+  "manifest_version": 1,
+  "type": "device",
+  "name": "TRIGGERcmd",
+  "description": {
+    "en": "Run commands on your computers from Gladys, and start scenes from Alexa or Google.",
+    "fr": "Lancez des commandes sur vos ordinateurs depuis Gladys, et des scènes depuis Alexa ou Google.",
+    "de": "Starte Befehle auf deinen Computern aus Gladys und Szenen über Alexa oder Google.",
+    "es": "Ejecute comandos en sus ordenadores desde Gladys y escenas desde Alexa o Google."
+  },
+  "version": "0.1.0",
+  "docker_image": "ghcr.io/william-de71/gladys-triggercmd:0.1.0",
+  "gladys_version": ">=5.3.0",
+  "categories": ["servers", "assistants"],
+  "keywords": [
+    "triggercmd",
+    "remote command",
+    "commande à distance",
+    "ordinateur",
+    "computer",
+    "pc",
+    "windows",
+    "raspberry pi",
+    "alexa",
+    "google assistant"
+  ],
+  "cover_image": "https://raw.githubusercontent.com/William-De71/gladys-triggercmd/main/cover.jpg",
+  "transports": ["cloud"],
+  "config_schema": [
+    {
+      "key": "intro",
+      "type": "section",
+      "label": {
+        "en": "TRIGGERcmd account",
+        "fr": "Compte TRIGGERcmd",
+        "de": "TRIGGERcmd-Konto",
+        "es": "Cuenta TRIGGERcmd"
+      },
+      "description": {
+        "en": "TRIGGERcmd runs commands on your computers (Windows, Mac, Linux, Raspberry Pi) where its agent is installed. Copy the token shown on the “Instructions” page of triggercmd.com (the one the agent asks for) and paste it below. The commands go through the TRIGGERcmd cloud. This integration is not affiliated with TRIGGERcmd.",
+        "fr": "TRIGGERcmd lance des commandes sur vos ordinateurs (Windows, Mac, Linux, Raspberry Pi) où son agent est installé. Copiez le jeton affiché sur la page « Instructions » de triggercmd.com (celui que l’agent demande) et collez-le ci-dessous. Les commandes passent par le cloud de TRIGGERcmd. Cette intégration n’est pas affiliée à TRIGGERcmd.",
+        "de": "TRIGGERcmd führt Befehle auf deinen Computern (Windows, Mac, Linux, Raspberry Pi) aus, auf denen sein Agent installiert ist. Kopiere das Token von der Seite „Instructions“ auf triggercmd.com (das der Agent abfragt) und füge es unten ein. Die Befehle laufen über die TRIGGERcmd-Cloud. Diese Integration ist nicht mit TRIGGERcmd verbunden.",
+        "es": "TRIGGERcmd ejecuta comandos en sus ordenadores (Windows, Mac, Linux, Raspberry Pi) donde está instalado su agente. Copie el token que aparece en la página «Instructions» de triggercmd.com (el que pide el agente) y péguelo abajo. Los comandos pasan por la nube de TRIGGERcmd. Esta integración no está afiliada a TRIGGERcmd."
+      },
+      "links": [
+        {
+          "url": "https://www.triggercmd.com/user/computer/create",
+          "label": {
+            "en": "Get the token",
+            "fr": "Obtenir le jeton",
+            "de": "Token abrufen",
+            "es": "Obtener el token"
+          }
+        },
+        {
+          "url": "https://docs.triggercmd.com/",
+          "label": {
+            "en": "TRIGGERcmd documentation",
+            "fr": "Documentation TRIGGERcmd",
+            "de": "TRIGGERcmd-Dokumentation",
+            "es": "Documentación de TRIGGERcmd"
+          }
+        }
+      ]
+    },
+    {
+      "key": "token",
+      "type": "secret",
+      "required": true,
+      "label": {
+        "en": "Token",
+        "fr": "Jeton",
+        "de": "Token",
+        "es": "Token"
+      },
+      "placeholder": {
+        "en": "The token of your TRIGGERcmd account",
+        "fr": "Le jeton de votre compte TRIGGERcmd",
+        "de": "Das Token deines TRIGGERcmd-Kontos",
+        "es": "El token de su cuenta TRIGGERcmd"
+      }
+    },
+    {
+      "key": "gladys_section",
+      "type": "section",
+      "label": {
+        "en": "Gladys computer (optional)",
+        "fr": "Ordinateur Gladys (facultatif)",
+        "de": "Gladys-Computer (optional)",
+        "es": "Ordenador Gladys (opcional)"
+      },
+      "description": {
+        "en": "Gladys can show up in TRIGGERcmd as one more computer. Its commands do not run anything on a computer: they start the Gladys scenes that use the trigger “TRIGGERcmd: command received”. Say “Alexa, turn on Movie” with the TRIGGERcmd Smart Home skill, or use a TRIGGERcmd panel, IFTTT or an AI assistant. The free plan of TRIGGERcmd holds a single computer: with a computer already in the account, this needs a subscription.",
+        "fr": "Gladys peut apparaître dans TRIGGERcmd comme un ordinateur de plus. Ses commandes n’exécutent rien sur un ordinateur : elles lancent les scènes Gladys qui utilisent le déclencheur « TRIGGERcmd : commande reçue ». Dites « Alexa, allume Film » avec la skill TRIGGERcmd Smart Home, ou utilisez un panneau TRIGGERcmd, IFTTT ou un assistant IA. L’offre gratuite de TRIGGERcmd ne permet qu’un ordinateur : s’il y en a déjà un dans le compte, il faut un abonnement.",
+        "de": "Gladys kann in TRIGGERcmd als weiterer Computer erscheinen. Seine Befehle führen nichts auf einem Computer aus: Sie starten die Gladys-Szenen mit dem Auslöser „TRIGGERcmd: Befehl empfangen“. Sag „Alexa, schalte Film ein“ mit dem Skill TRIGGERcmd Smart Home oder nutze ein TRIGGERcmd-Panel, IFTTT oder einen KI-Assistenten. Der kostenlose Tarif von TRIGGERcmd erlaubt nur einen Computer: Ist schon einer im Konto, ist ein Abonnement nötig.",
+        "es": "Gladys puede aparecer en TRIGGERcmd como un ordenador más. Sus comandos no ejecutan nada en un ordenador: lanzan las escenas de Gladys que usan el disparador «TRIGGERcmd: comando recibido». Diga «Alexa, enciende Película» con la skill TRIGGERcmd Smart Home, o use un panel de TRIGGERcmd, IFTTT o un asistente de IA. El plan gratuito de TRIGGERcmd solo admite un ordenador: si ya hay uno en la cuenta, se necesita una suscripción."
+      }
+    },
+    {
+      "key": "gladys_computer",
+      "type": "boolean",
+      "default": false,
+      "label": {
+        "en": "Create the Gladys computer",
+        "fr": "Créer l’ordinateur Gladys",
+        "de": "Gladys-Computer anlegen",
+        "es": "Crear el ordenador Gladys"
+      },
+      "description": {
+        "en": "Adds the computer to your TRIGGERcmd account and listens to its commands. Turning it off stops listening; delete the computer on triggercmd.com if you no longer want it.",
+        "fr": "Ajoute l’ordinateur à votre compte TRIGGERcmd et écoute ses commandes. Désactiver arrête l’écoute ; supprimez l’ordinateur sur triggercmd.com si vous n’en voulez plus.",
+        "de": "Fügt den Computer deinem TRIGGERcmd-Konto hinzu und hört auf seine Befehle. Ausschalten beendet das Zuhören; lösche den Computer auf triggercmd.com, wenn du ihn nicht mehr willst.",
+        "es": "Añade el ordenador a su cuenta TRIGGERcmd y escucha sus comandos. Desactivarlo detiene la escucha; elimine el ordenador en triggercmd.com si ya no lo quiere."
+      }
+    },
+    {
+      "key": "gladys_computer_name",
+      "type": "string",
+      "default": "Gladys",
+      "label": {
+        "en": "Name of the computer",
+        "fr": "Nom de l’ordinateur",
+        "de": "Name des Computers",
+        "es": "Nombre del ordenador"
+      },
+      "description": {
+        "en": "Its name in TRIGGERcmd. Changing it creates another computer.",
+        "fr": "Son nom dans TRIGGERcmd. Le changer crée un autre ordinateur.",
+        "de": "Sein Name in TRIGGERcmd. Eine Änderung legt einen weiteren Computer an.",
+        "es": "Su nombre en TRIGGERcmd. Cambiarlo crea otro ordenador."
+      },
+      "placeholder": {
+        "en": "Gladys",
+        "fr": "Gladys",
+        "de": "Gladys",
+        "es": "Gladys"
+      }
+    },
+    {
+      "key": "gladys_commands",
+      "type": "string",
+      "label": {
+        "en": "Commands",
+        "fr": "Commandes",
+        "de": "Befehle",
+        "es": "Comandos"
+      },
+      "description": {
+        "en": "Their names, separated by commas: they are also the names Alexa and Google Assistant know (“turn on Movie”). 50 at most.",
+        "fr": "Leurs noms, séparés par des virgules : ce sont aussi les noms qu’Alexa et Google Assistant connaissent (« allume Film »). 50 au plus.",
+        "de": "Ihre Namen, durch Kommas getrennt: Es sind auch die Namen, die Alexa und Google Assistant kennen („schalte Film ein“). Höchstens 50.",
+        "es": "Sus nombres, separados por comas: también son los nombres que conocen Alexa y Google Assistant («enciende Película»). 50 como máximo."
+      },
+      "placeholder": {
+        "en": "Movie, Good night, Wake up",
+        "fr": "Film, Bonne nuit, Réveil",
+        "de": "Film, Gute Nacht, Aufwachen",
+        "es": "Película, Buenas noches, Despertar"
+      }
+    }
+  ],
+  "actions": [
+    {
+      "key": "test_connection",
+      "timeout_seconds": 60,
+      "label": {
+        "en": "Test the connection",
+        "fr": "Tester la connexion",
+        "de": "Verbindung testen",
+        "es": "Probar la conexión"
+      },
+      "description": {
+        "en": "Reads the computers and their commands, and sets up the Gladys computer when it is enabled.",
+        "fr": "Lit les ordinateurs et leurs commandes, et met en place l’ordinateur Gladys s’il est activé.",
+        "de": "Liest die Computer und ihre Befehle und richtet den Gladys-Computer ein, wenn er aktiviert ist.",
+        "es": "Lee los ordenadores y sus comandos, y configura el ordenador Gladys si está activado."
+      }
+    },
+    {
+      "key": "diagnostic",
+      "timeout_seconds": 10,
+      "label": {
+        "en": "Diagnostic",
+        "fr": "Diagnostic",
+        "de": "Diagnose",
+        "es": "Diagnóstico"
+      },
+      "description": {
+        "en": "Writes what the integration knows to its logs (no token), for an issue.",
+        "fr": "Écrit ce que l’intégration sait dans ses journaux (sans le jeton), pour un ticket.",
+        "de": "Schreibt, was die Integration weiß, in ihre Logs (ohne Token), für ein Issue.",
+        "es": "Escribe lo que sabe la integración en sus registros (sin el token), para una incidencia."
+      }
+    }
+  ],
+  "widgets": [
+    {
+      "key": "commands",
+      "label": {
+        "en": "TRIGGERcmd commands",
+        "fr": "Commandes TRIGGERcmd",
+        "de": "TRIGGERcmd-Befehle",
+        "es": "Comandos TRIGGERcmd"
+      },
+      "description": {
+        "en": "The last runs of your computers, and a button to run a command with its parameters.",
+        "fr": "Les dernières commandes lancées et un bouton pour en lancer une, avec ses paramètres.",
+        "de": "Die letzten Ausführungen und eine Schaltfläche, um einen Befehl mit Parametern zu starten.",
+        "es": "Las últimas ejecuciones de sus ordenadores y un botón para ejecutar un comando con sus parámetros."
+      },
+      "icon": "terminal",
+      "action_timeout_seconds": 30,
+      "settings": [
+        {
+          "key": "computer",
+          "type": "select",
+          "source": "devices",
+          "required": false,
+          "label": {
+            "en": "Computer",
+            "fr": "Ordinateur",
+            "de": "Computer",
+            "es": "Ordenador"
+          },
+          "description": {
+            "en": "A TRIGGERcmd device. Leave empty for every computer.",
+            "fr": "Un appareil TRIGGERcmd. Laissez vide pour tous les ordinateurs.",
+            "de": "Ein TRIGGERcmd-Gerät. Leer lassen für alle Computer.",
+            "es": "Un dispositivo TRIGGERcmd. Déjelo vacío para todos los ordenadores."
+          }
+        }
+      ]
+    }
+  ],
+  "scene_triggers": [
+    {
+      "key": "command_received",
+      "label": {
+        "en": "TRIGGERcmd: command received",
+        "fr": "TRIGGERcmd : commande reçue",
+        "de": "TRIGGERcmd: Befehl empfangen",
+        "es": "TRIGGERcmd: comando recibido"
+      },
+      "description": {
+        "en": "A command of the Gladys computer was run in TRIGGERcmd (Alexa, Google Assistant, a panel, IFTTT…).",
+        "fr": "Une commande de l’ordinateur Gladys a été lancée dans TRIGGERcmd (Alexa, Google Assistant, un panneau, IFTTT…).",
+        "de": "Ein Befehl des Gladys-Computers wurde in TRIGGERcmd ausgeführt (Alexa, Google Assistant, ein Panel, IFTTT…).",
+        "es": "Se ejecutó un comando del ordenador Gladys en TRIGGERcmd (Alexa, Google Assistant, un panel, IFTTT…)."
+      },
+      "fields": [
+        {
+          "key": "command",
+          "type": "string",
+          "required": false,
+          "label": {
+            "en": "Command",
+            "fr": "Commande",
+            "de": "Befehl",
+            "es": "Comando"
+          },
+          "description": {
+            "en": "Its name exactly, as in the configuration. Leave empty for any command.",
+            "fr": "Son nom exact, comme dans la configuration. Laissez vide pour toutes les commandes.",
+            "de": "Sein genauer Name wie in der Konfiguration. Leer lassen für jeden Befehl.",
+            "es": "Su nombre exacto, como en la configuración. Déjelo vacío para cualquier comando."
+          },
+          "placeholder": {
+            "en": "Movie",
+            "fr": "Film",
+            "de": "Film",
+            "es": "Película"
+          }
+        },
+        {
+          "key": "state",
+          "type": "select",
+          "required": false,
+          "label": {
+            "en": "On or off",
+            "fr": "Allumer ou éteindre",
+            "de": "Ein oder aus",
+            "es": "Encender o apagar"
+          },
+          "description": {
+            "en": "“Turn on” sends on, “turn off” sends off. Leave empty for both.",
+            "fr": "« Allume » envoie on, « éteins » envoie off. Laissez vide pour les deux.",
+            "de": "„Schalte ein“ sendet on, „schalte aus“ sendet off. Leer lassen für beides.",
+            "es": "«Enciende» envía on, «apaga» envía off. Déjelo vacío para ambos."
+          },
+          "options": [
+            {
+              "value": "on",
+              "label": {
+                "en": "On",
+                "fr": "Allumer",
+                "de": "Ein",
+                "es": "Encender"
+              }
+            },
+            {
+              "value": "off",
+              "label": {
+                "en": "Off",
+                "fr": "Éteindre",
+                "de": "Aus",
+                "es": "Apagar"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "command",
+          "type": "string",
+          "label": {
+            "en": "Command",
+            "fr": "Commande",
+            "de": "Befehl",
+            "es": "Comando"
+          }
+        },
+        {
+          "key": "params",
+          "type": "string",
+          "label": {
+            "en": "Parameters",
+            "fr": "Paramètres",
+            "de": "Parameter",
+            "es": "Parámetros"
+          }
+        },
+        {
+          "key": "state",
+          "type": "string",
+          "label": {
+            "en": "State (on, off or empty)",
+            "fr": "État (on, off ou vide)",
+            "de": "Zustand (on, off oder leer)",
+            "es": "Estado (on, off o vacío)"
+          }
+        },
+        {
+          "key": "sender",
+          "type": "string",
+          "label": {
+            "en": "Sent by",
+            "fr": "Envoyée par",
+            "de": "Gesendet von",
+            "es": "Enviado por"
+          }
+        },
+        {
+          "key": "computer",
+          "type": "string",
+          "label": {
+            "en": "Gladys computer",
+            "fr": "Ordinateur Gladys",
+            "de": "Gladys-Computer",
+            "es": "Ordenador Gladys"
+          }
+        }
+      ]
+    },
+    {
+      "key": "run_failed",
+      "label": {
+        "en": "TRIGGERcmd: command refused",
+        "fr": "TRIGGERcmd : commande refusée",
+        "de": "TRIGGERcmd: Befehl abgelehnt",
+        "es": "TRIGGERcmd: comando rechazado"
+      },
+      "description": {
+        "en": "TRIGGERcmd refused a command sent from a device or the widget.",
+        "fr": "TRIGGERcmd a refusé une commande envoyée depuis un appareil ou le widget.",
+        "de": "TRIGGERcmd hat einen Befehl von einem Gerät oder dem Widget abgelehnt.",
+        "es": "TRIGGERcmd rechazó un comando enviado desde un dispositivo o el widget."
+      },
+      "fields": [
+        {
+          "key": "reason",
+          "type": "select",
+          "required": false,
+          "label": {
+            "en": "Reason",
+            "fr": "Raison",
+            "de": "Grund",
+            "es": "Motivo"
+          },
+          "description": {
+            "en": "Leave empty for any reason.",
+            "fr": "Laissez vide pour toutes les raisons.",
+            "de": "Leer lassen für jeden Grund.",
+            "es": "Déjelo vacío para cualquier motivo."
+          },
+          "options": [
+            {
+              "value": "unknown_command",
+              "label": {
+                "en": "Unknown command",
+                "fr": "Commande inconnue",
+                "de": "Unbekannter Befehl",
+                "es": "Comando desconocido"
+              }
+            },
+            {
+              "value": "rate_limit",
+              "label": {
+                "en": "Too many commands",
+                "fr": "Trop de commandes",
+                "de": "Zu viele Befehle",
+                "es": "Demasiados comandos"
+              }
+            },
+            {
+              "value": "token",
+              "label": {
+                "en": "Token refused",
+                "fr": "Jeton refusé",
+                "de": "Token abgelehnt",
+                "es": "Token rechazado"
+              }
+            },
+            {
+              "value": "subscription",
+              "label": {
+                "en": "Subscription needed",
+                "fr": "Abonnement requis",
+                "de": "Abo erforderlich",
+                "es": "Requiere suscripción"
+              }
+            },
+            {
+              "value": "unreachable",
+              "label": {
+                "en": "TRIGGERcmd unreachable",
+                "fr": "TRIGGERcmd injoignable",
+                "de": "TRIGGERcmd nicht erreichbar",
+                "es": "TRIGGERcmd inaccesible"
+              }
+            },
+            {
+              "value": "error",
+              "label": {
+                "en": "Other error",
+                "fr": "Autre erreur",
+                "de": "Anderer Fehler",
+                "es": "Otro error"
+              }
+            }
+          ]
+        }
+      ],
+      "variables": [
+        {
+          "key": "computer",
+          "type": "string",
+          "label": {
+            "en": "Computer",
+            "fr": "Ordinateur",
+            "de": "Computer",
+            "es": "Ordenador"
+          }
+        },
+        {
+          "key": "command",
+          "type": "string",
+          "label": {
+            "en": "Command",
+            "fr": "Commande",
+            "de": "Befehl",
+            "es": "Comando"
+          }
+        },
+        {
+          "key": "reason",
+          "type": "string",
+          "label": {
+            "en": "Reason",
+            "fr": "Raison",
+            "de": "Grund",
+            "es": "Motivo"
+          }
+        },
+        {
+          "key": "message",
+          "type": "string",
+          "label": {
+            "en": "Message",
+            "fr": "Message",
+            "de": "Meldung",
+            "es": "Mensaje"
+          }
+        }
+      ]
+    },
+    {
+      "key": "access_refused",
+      "label": {
+        "en": "TRIGGERcmd: token refused",
+        "fr": "TRIGGERcmd : jeton refusé",
+        "de": "TRIGGERcmd: Token abgelehnt",
+        "es": "TRIGGERcmd: token rechazado"
+      },
+      "description": {
+        "en": "TRIGGERcmd refuses the token of the configuration (once per refusal).",
+        "fr": "TRIGGERcmd refuse le jeton de la configuration (une fois par refus).",
+        "de": "TRIGGERcmd lehnt das Token der Konfiguration ab (einmal pro Ablehnung).",
+        "es": "TRIGGERcmd rechaza el token de la configuración (una vez por rechazo)."
+      },
+      "variables": [
+        {
+          "key": "message",
+          "type": "string",
+          "label": {
+            "en": "Message",
+            "fr": "Message",
+            "de": "Meldung",
+            "es": "Mensaje"
+          }
+        }
+      ]
+    }
+  ],
+  "scene_actions": [
+    {
+      "key": "run_command",
+      "timeout_seconds": 30,
+      "label": {
+        "en": "TRIGGERcmd: run a command",
+        "fr": "TRIGGERcmd : lancer une commande",
+        "de": "TRIGGERcmd: Befehl ausführen",
+        "es": "TRIGGERcmd: ejecutar un comando"
+      },
+      "description": {
+        "en": "Runs a command on a computer, by their names, with optional parameters.",
+        "fr": "Lance une commande sur un ordinateur, par leurs noms, avec des paramètres facultatifs.",
+        "de": "Führt einen Befehl auf einem Computer aus, nach ihren Namen, mit optionalen Parametern.",
+        "es": "Ejecuta un comando en un ordenador, por sus nombres, con parámetros opcionales."
+      },
+      "fields": [
+        {
+          "key": "computer",
+          "type": "string",
+          "required": true,
+          "label": {
+            "en": "Computer",
+            "fr": "Ordinateur",
+            "de": "Computer",
+            "es": "Ordenador"
+          },
+          "description": {
+            "en": "Its name in TRIGGERcmd (case does not matter).",
+            "fr": "Son nom dans TRIGGERcmd (majuscules indifférentes).",
+            "de": "Sein Name in TRIGGERcmd (Groß- und Kleinschreibung egal).",
+            "es": "Su nombre en TRIGGERcmd (mayúsculas indiferentes)."
+          },
+          "placeholder": {
+            "en": "Office PC",
+            "fr": "PC du bureau",
+            "de": "Büro-PC",
+            "es": "PC de la oficina"
+          }
+        },
+        {
+          "key": "command",
+          "type": "string",
+          "required": true,
+          "label": {
+            "en": "Command",
+            "fr": "Commande",
+            "de": "Befehl",
+            "es": "Comando"
+          },
+          "description": {
+            "en": "Its name in TRIGGERcmd (the Trigger of the agent).",
+            "fr": "Son nom dans TRIGGERcmd (le Trigger de l’agent).",
+            "de": "Sein Name in TRIGGERcmd (der Trigger des Agenten).",
+            "es": "Su nombre en TRIGGERcmd (el Trigger del agente)."
+          },
+          "placeholder": {
+            "en": "Lock screen",
+            "fr": "Verrouiller l’écran",
+            "de": "Bildschirm sperren",
+            "es": "Bloquear pantalla"
+          }
+        },
+        {
+          "key": "parameters",
+          "type": "string",
+          "required": false,
+          "label": {
+            "en": "Parameters",
+            "fr": "Paramètres",
+            "de": "Parameter",
+            "es": "Parámetros"
+          },
+          "description": {
+            "en": "Only for a command that allows parameters. Variables of the scene can be used.",
+            "fr": "Seulement pour une commande qui accepte des paramètres. Les variables de la scène sont utilisables.",
+            "de": "Nur für einen Befehl, der Parameter erlaubt. Variablen der Szene sind möglich.",
+            "es": "Solo para un comando que acepta parámetros. Se pueden usar variables de la escena."
+          },
+          "placeholder": {
+            "en": "on",
+            "fr": "on",
+            "de": "on",
+            "es": "on"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "key": "computer",
+          "type": "string",
+          "label": {
+            "en": "Computer",
+            "fr": "Ordinateur",
+            "de": "Computer",
+            "es": "Ordenador"
+          }
+        },
+        {
+          "key": "command",
+          "type": "string",
+          "label": {
+            "en": "Command",
+            "fr": "Commande",
+            "de": "Befehl",
+            "es": "Comando"
+          }
+        },
+        {
+          "key": "message",
+          "type": "string",
+          "label": {
+            "en": "Answer of TRIGGERcmd",
+            "fr": "Réponse de TRIGGERcmd",
+            "de": "Antwort von TRIGGERcmd",
+            "es": "Respuesta de TRIGGERcmd"
+          }
+        }
+      ]
+    },
+    {
+      "key": "refresh",
+      "timeout_seconds": 30,
+      "label": {
+        "en": "TRIGGERcmd: read the commands",
+        "fr": "TRIGGERcmd : relire les commandes",
+        "de": "TRIGGERcmd: Befehle neu lesen",
+        "es": "TRIGGERcmd: releer los comandos"
+      },
+      "description": {
+        "en": "Reads the computers and their commands again (new commands appear in the discovery).",
+        "fr": "Relit les ordinateurs et leurs commandes (les nouvelles commandes apparaissent dans la découverte).",
+        "de": "Liest die Computer und ihre Befehle neu (neue Befehle erscheinen in der Erkennung).",
+        "es": "Vuelve a leer los ordenadores y sus comandos (los nuevos aparecen en el descubrimiento)."
+      },
+      "fields": [],
+      "outputs": [
+        {
+          "key": "computer_count",
+          "type": "number",
+          "label": {
+            "en": "Computers",
+            "fr": "Ordinateurs",
+            "de": "Computer",
+            "es": "Ordenadores"
+          }
+        },
+        {
+          "key": "command_count",
+          "type": "number",
+          "label": {
+            "en": "Commands",
+            "fr": "Commandes",
+            "de": "Befehle",
+            "es": "Comandos"
+          }
+        }
+      ]
+    }
+  ]
+}

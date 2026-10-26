@@ -1,0 +1,15 @@
+Gladys TRIGGERcmd integration
+Copyright 2026 William Deren
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+It runs the commands of the computers of the user's own TRIGGERcmd account
+through the TRIGGERcmd API (https://docs.triggercmd.com), with the token of that
+account. This integration is not affiliated with nor endorsed by TRIGGERcmd.
+The endpoints follow the TRIGGERcmd documentation, the official agent
+(https://github.com/rvmey/TRIGGERcmd-Agent, MIT), the official MCP server and
+Mission Control client of TRIGGERcmd, and the answers of the live API to a
+wrong token; the socket protocol of the "Gladys" computer follows the official
+agent (Sails over socket.io 2). The Home Assistant "TRIGGERcmd" integration and
+its "triggercmd" library were read for the on/off behaviour of the commands. No
+code is taken from any of them.

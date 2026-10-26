@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="534" viewBox="0 0 800 534">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0f1b2d"/>
+      <stop offset="1" stop-color="#1d3a5f"/>
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1220"/>
+      <stop offset="1" stop-color="#14233a"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="534" fill="url(#bg)"/>
+  <!-- a grid of dots, like a circuit -->
+  <g fill="#2a4b75">
+    <circle cx="560" cy="60" r="3"/><circle cx="600" cy="60" r="3"/><circle cx="640" cy="60" r="3"/>
+    <circle cx="680" cy="60" r="3"/><circle cx="720" cy="60" r="3"/><circle cx="760" cy="60" r="3"/>
+    <circle cx="560" cy="100" r="3"/><circle cx="600" cy="100" r="3"/><circle cx="640" cy="100" r="3"/>
+    <circle cx="680" cy="100" r="3"/><circle cx="720" cy="100" r="3"/><circle cx="760" cy="100" r="3"/>
+  </g>
+  <!-- the laptop -->
+  <g transform="translate(400 250)">
+    <rect x="0" y="0" width="300" height="190" rx="14" fill="#c9d4e3"/>
+    <rect x="14" y="14" width="272" height="162" rx="6" fill="url(#screen)"/>
+    <g font-family="DejaVu Sans Mono, monospace" font-size="17">
+      <text x="30" y="48" fill="#5fd38d">$ lock-screen</text>
+      <text x="30" y="78" fill="#8fb3e8">$ volume 30</text>
+      <text x="30" y="108" fill="#ffd166">$ shutdown</text>
+      <rect x="30" y="122" width="12" height="20" fill="#5fd38d"/>
+    </g>
+    <path d="M-30 190 H330 L310 214 H-10 Z" fill="#9fb0c6"/>
+  </g>
+  <!-- the Raspberry Pi -->
+  <g transform="translate(250 330)">
+    <rect x="0" y="0" width="120" height="84" rx="8" fill="#2e8b57"/>
+    <rect x="14" y="14" width="40" height="40" rx="4" fill="#1d1d1d"/>
+    <rect x="66" y="14" width="40" height="18" rx="3" fill="#c0c7d0"/>
+    <rect x="66" y="40" width="40" height="18" rx="3" fill="#c0c7d0"/>
+    <g fill="#e0b84a">
+      <rect x="10" y="66" width="6" height="8"/><rect x="22" y="66" width="6" height="8"/>
+      <rect x="34" y="66" width="6" height="8"/><rect x="46" y="66" width="6" height="8"/>
+      <rect x="58" y="66" width="6" height="8"/><rect x="70" y="66" width="6" height="8"/>
+      <rect x="82" y="66" width="6" height="8"/><rect x="94" y="66" width="6" height="8"/>
+    </g>
+  </g>
+  <!-- the signal from Gladys -->
+  <g stroke="#7fc8ff" stroke-width="6" fill="none" stroke-linecap="round">
+    <path d="M640 200 a40 40 0 0 1 40 40"/>
+    <path d="M640 170 a70 70 0 0 1 70 70"/>
+    <path d="M640 140 a100 100 0 0 1 100 100"/>
+  </g>
+  <circle cx="640" cy="240" r="10" fill="#7fc8ff"/>
+  <!-- a voice bubble -->
+  <g transform="translate(120 200)">
+    <rect x="0" y="0" width="170" height="70" rx="22" fill="#ffffff"/>
+    <path d="M40 70 L30 98 L70 70 Z" fill="#ffffff"/>
+    <text x="85" y="44" text-anchor="middle" font-family="DejaVu Sans, Arial, sans-serif" font-size="22" fill="#1d3a5f">“Movie, on”</text>
+  </g>
+  <g font-family="DejaVu Sans, Arial, sans-serif" fill="#ffffff">
+    <text x="40" y="96" font-size="64" font-weight="bold">TRIGGERcmd</text>
+    <text x="42" y="142" font-size="28">for Gladys Assistant</text>
+    <text x="42" y="180" font-size="20" fill="#bcd6f5">your computers · commands · voice → scenes</text>
+  </g>
+</svg>
